@@ -9,6 +9,7 @@ export default function Home() {
           </div>
           <div className="space-x-6">
             <a href="#features" className="hover:text-blue-400 transition">Features</a>
+            <a href="#install" className="hover:text-blue-400 transition">Install</a>
             <a href="#about" className="hover:text-blue-400 transition">About</a>
             <a href="https://docs.artifactiq.ai" className="hover:text-blue-400 transition">Docs</a>
             <a href="#waitlist" className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg transition">
@@ -96,8 +97,28 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Installation Section */}
+        <div className="max-w-3xl mx-auto mt-24" id="install">
+          <h2 className="text-3xl font-bold text-center mb-8">Quick Start</h2>
+          <div className="bg-gray-800/50 p-6 rounded-xl mb-6">
+            <h3 className="text-lg font-semibold mb-4 text-blue-400">Prerequisites</h3>
+            <p className="text-gray-400 mb-4">
+              Artifactiq uses <a href="https://github.com/mlOS-foundation/axon" className="text-blue-400 hover:underline">Axon</a> for
+              model management. Install Axon first (one-time setup):
+            </p>
+            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm mb-4">
+              <code className="text-green-400">curl -sSL axon.mlosfoundation.org | sh</code>
+            </pre>
+            <p className="text-gray-400 mb-4">Then install a detection model:</p>
+            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm">
+              <code className="text-green-400">axon install hf/ultralytics/yolov8n --format onnx</code>
+            </pre>
+            <p className="text-gray-500 text-sm mt-4">Requires Axon v3.4.3+ for YOLO ONNX conversion</p>
+          </div>
+        </div>
+
         {/* Code Example */}
-        <div className="max-w-3xl mx-auto mt-24">
+        <div className="max-w-3xl mx-auto mt-12">
           <h2 className="text-3xl font-bold text-center mb-8">Simple Integration</h2>
           <pre className="bg-gray-800 p-6 rounded-xl overflow-x-auto text-sm">
             <code className="text-gray-300">{`from artifactiq import Artifactiq
