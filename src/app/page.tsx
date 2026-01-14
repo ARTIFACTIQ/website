@@ -100,20 +100,56 @@ export default function Home() {
         {/* Installation Section */}
         <div className="max-w-3xl mx-auto mt-24" id="install">
           <h2 className="text-3xl font-bold text-center mb-8">Quick Start</h2>
+
+          {/* Simple Usage - Primary */}
           <div className="bg-gray-800/50 p-6 rounded-xl mb-6">
-            <h3 className="text-lg font-semibold mb-4 text-blue-400">Prerequisites</h3>
+            <h3 className="text-lg font-semibold mb-4 text-blue-400">Just Works</h3>
             <p className="text-gray-400 mb-4">
-              Artifactiq uses <a href="https://github.com/mlOS-foundation/axon" className="text-blue-400 hover:underline">Axon</a> for
-              model management. Install Axon first (one-time setup):
+              Artifactiq auto-downloads its trained model on first use. No setup required:
+            </p>
+            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm">
+              <code className="text-green-400">artifactiq analyze --input photo.jpg</code>
+            </pre>
+            <p className="text-gray-500 text-sm mt-4">The default model is automatically downloaded from GitHub releases</p>
+          </div>
+
+          {/* Config-Driven Setup */}
+          <div className="bg-gray-800/50 p-6 rounded-xl mb-6">
+            <h3 className="text-lg font-semibold mb-4 text-blue-400">Config-Driven (Optional)</h3>
+            <p className="text-gray-400 mb-4">
+              Pin model versions and customize settings via config file:
             </p>
             <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-              <code className="text-green-400">curl -sSL axon.mlosfoundation.org | sh</code>
+              <code className="text-green-400">artifactiq config --init</code>
             </pre>
-            <p className="text-gray-400 mb-4">Then install a detection model:</p>
+            <p className="text-gray-400 mb-4">Creates <code className="text-blue-400">~/.config/artifactiq/config.toml</code>:</p>
             <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm">
-              <code className="text-green-400">axon install hf/ultralytics/yolov8n --format onnx</code>
+              <code className="text-gray-300">{`[model]
+version = "v1.0.0"        # Pin to specific version
+update_policy = "check"   # manual, check, or auto
+
+[engine]
+min_confidence = 0.5
+device = "auto"           # auto, cpu, cuda, mps`}</code>
             </pre>
-            <p className="text-gray-500 text-sm mt-4">Requires Axon v3.4.3+ for YOLO ONNX conversion</p>
+          </div>
+
+          {/* Alternative Models */}
+          <div className="bg-gray-800/50 p-6 rounded-xl">
+            <h3 className="text-lg font-semibold mb-4 text-blue-400">Use Other Models</h3>
+            <p className="text-gray-400 mb-4">
+              Override with any ONNX model or use <a href="https://github.com/mlOS-foundation/axon" className="text-blue-400 hover:underline">Axon</a>-managed models:
+            </p>
+            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm mb-4">
+              <code className="text-gray-300">{`# Use a specific Artifactiq model version
+artifactiq analyze --input photo.jpg --model artifactiq:v1.0.0
+
+# Use YOLOv8 via Axon
+artifactiq analyze --input photo.jpg --model yolov8n
+
+# Use custom ONNX file
+artifactiq analyze --input photo.jpg --model ./custom-model.onnx`}</code>
+            </pre>
           </div>
         </div>
 
