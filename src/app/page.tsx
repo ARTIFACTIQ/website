@@ -10,7 +10,7 @@ export default function Home() {
           <div className="space-x-6">
             <a href="#features" className="hover:text-blue-400 transition">Features</a>
             <a href="#install" className="hover:text-blue-400 transition">Install</a>
-            <a href="#about" className="hover:text-blue-400 transition">About</a>
+            <a href="/news" className="hover:text-blue-400 transition">News</a>
             <a href="https://docs.artifactiq.ai" className="hover:text-blue-400 transition">Docs</a>
             <a href="#waitlist" className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg transition">
               Join Waitlist
@@ -172,6 +172,29 @@ for artifact in result.artifacts:
 
     print(f"{artifact.label}: {len(products)} products found")`}</code>
           </pre>
+        </div>
+
+        {/* Latest News Section */}
+        <div className="max-w-4xl mx-auto mt-24" id="news">
+          <h2 className="text-3xl font-bold text-center mb-8">Latest Updates</h2>
+          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">NEW</span>
+              <span className="text-sm text-gray-400">January 21, 2026</span>
+            </div>
+            <h3 className="text-xl font-semibold mb-2">
+              <a href="/news/v2-model-training" className="hover:text-blue-400 transition">
+                Artifactiq v2 Model: Domain-Specific Detection Breakthrough
+              </a>
+            </h3>
+            <p className="text-gray-400 mb-4">
+              Our custom-trained model now detects apparel, accessories, and footwear—categories that stock models cannot identify.
+              Stock YOLOv8n: 0 apparel detections. Artifactiq v2: 40+ apparel detections.
+            </p>
+            <a href="/news/v2-model-training" className="text-blue-400 hover:underline text-sm">
+              Read the full report →
+            </a>
+          </div>
         </div>
 
         {/* Waitlist Section */}
